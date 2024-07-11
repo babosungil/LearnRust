@@ -58,6 +58,13 @@ fn main() {
     let ref_4 = &mut ref_2;
     println!("{ref_3}, {ref_4}");
     */
+
+
+    // slice
+    let slice = String::from("1234567890");
+    let slice_1 = &slice[0..=5];
+    let slice_2 = &slice[3..];
+    println!("slice 1 : {slice_1}, 2 : {slice_2}");
 }
 
 fn func(param_1 : i32, mut param_2 : String) -> String {
