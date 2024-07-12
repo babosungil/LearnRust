@@ -1,10 +1,27 @@
 
 // struct
+#[derive(Debug)]
 struct UserData {
     active : bool,
     name : String,
     age : u8,
-    point: i64,
+    point: i64
+}
+
+// method
+impl UserData {    
+    fn realAge(&self) -> u8 {
+        self.age + 1
+    }
+
+    fn NewData(in_name : String, in_age : u8, in_point : i64) -> Self {
+        Self {
+            active : false,
+            name: in_name,
+            age: in_age,
+            point: in_point
+        }
+    }
 }
 
 
@@ -39,5 +56,13 @@ fn main() {
     let three_2 = THREE_2(300, 200, 100);
     println!("{}", three_1.0);
     //three_2 = three_1; // error!
+
+    
+    // mathod
+    let method_1 = user_data_1.realAge();
+    println!("method_1 {method_1}");
+
+    let method_2 = UserData::NewData(String::from("new_name"), 12, 3456);
+    dbg!(&method_2);
 
 }
