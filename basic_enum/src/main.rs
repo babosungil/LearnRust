@@ -94,4 +94,14 @@ fn main() {
 
     let baseball_value = match_sport(ESport::Baseball(ETeam::Team2));
     println!("Baseball = Team2 : {baseball_value}");
+
+
+    // if let
+    if let soccer_value = 2 {
+        println!("soccer = 2");
+    }
+    else {
+        println!("soccer != 2");
+    }
+
 }
