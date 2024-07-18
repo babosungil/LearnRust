@@ -1,8 +1,8 @@
 pub mod util {
 
-    struct MathData {
-        num_one : i32,
-        num_two : i32
+    pub struct MathData {
+        pub num_one : i32,
+        pub num_two : i32
     }
 
     pub fn plus(param_1 : i32, param_2 : i32) -> i32 {
@@ -25,7 +25,18 @@ pub mod util {
         pub fn div(param_1 : i32, param_2 : i32) -> i32 {
             param_1 / param_2
         }
-    }    
+    }
+
+    pub fn super_tmath_func() -> i32 {
+        super::tmath_func()
+    }
+}
+
+
+mod private_util {
+    pub fn plus(param_1 : i32, param_2 : i32) -> i32 {
+        param_1 + param_2
+    }
 }
 
 
