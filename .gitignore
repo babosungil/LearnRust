@@ -3,4 +3,5 @@ basic_2/target/
 basic_ownership/target/
 basic_struct/target/
 basic_enum/target/
+PackageAndModule/target/
 thread_1/target/
