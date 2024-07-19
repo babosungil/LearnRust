@@ -13,7 +13,7 @@ fn main() {
     };
     println!("math_data : {0}, {1}", math_data.num_one, math_data.num_two);
 
-    let tmath_func = tmath::tmath_func();
+    let tmath_func = tmath::tmath::tmath_func();
     println!("tmath_func : {tmath_func}");
 
     let plus = tmath::util::plus(5, 2);
