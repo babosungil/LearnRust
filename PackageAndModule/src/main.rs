@@ -1,6 +1,9 @@
 mod tmath;
+use rand::Rng;
 //use tmath::util::mul::mul; // error - private function
-use tmath::util::div::div;
+//use tmath::util::* // glob operator
+use tmath::util::div::div as util_div;
+pub use tmath::util::minus;
 
 
 fn main() {
@@ -22,7 +25,7 @@ fn main() {
     //let mul = mul(5, 2);          // error - call private function
     //println!("mul : {mul}");
 
-    let div = div(5, 2);
+    let div = util_div(5, 2);
     println!("div : {div}");
 
     //let private_plus = tmath::private_util::plus(5, 3);     // error - call private module
@@ -30,4 +33,7 @@ fn main() {
 
     let super_tmath_func = tmath::util::super_tmath_func();
     println!("super_tmath_func : {super_tmath_func}");
+
+    let rand_value = rand::thread_rng().gen_range(1..=1000);
+    println!("rand_value {rand_value}");
 }
