@@ -5,4 +5,6 @@ basic_struct/target/
 basic_enum/target/
 Collection/target/
 PackageAndModule/target/
+String/target/
+Hashmap/target/
 thread_1/target/
