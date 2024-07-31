@@ -30,6 +30,73 @@ impl DataType_Two<i32, f32>  {
 
 
 
+pub trait ToText {    
+    fn toText(&self) -> String;
+
+    fn toText_2(&self) -> String {
+        String::from("ToText::toText_2")
+    }
+}
+
+enum EDays {
+    Mon,
+    Tue,
+    Wed,
+    Thu,
+    Fri,
+    Sat,
+    Sun,
+}
+
+pub struct Days {
+    day : EDays,
+}
+
+impl ToText for Days {
+    fn toText(&self) -> String {
+        match self.day {
+            EDays::Mon => String::from("Monday"),
+            EDays::Tue => String::from("Tuesday"),
+            EDays::Wed => String::from("Wednesday"),
+            EDays::Thu => String::from("Thuesday"),
+            EDays::Fri => String::from("Friday"),
+            EDays::Sat => String::from("Saturday"),
+            EDays::Sun => String::from("Sunday"),
+        }
+    }
+
+    fn toText_2(&self) -> String {
+        String::from("Days::toText_2")
+    }
+}
+
+
+enum ENumber {
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+}
+
+pub struct Number {
+    num : ENumber,
+}
+
+impl ToText for Number {
+    fn toText(&self) -> String {
+        match self.num {
+            ENumber::One => String::from("One"),
+            ENumber::Two => String::from("Two"),
+            ENumber::Three => String::from("Three"),
+            ENumber::Four => String::from("Four"),
+            ENumber::Five => String::from("Five"),
+        }
+    }
+}
+
+
+
 fn main() {
     //let data = Datas { num_1 : 2, num_2 : 3.1 }; // error!
     let data_one = DataType_One { t1_1 : 2, t1_2 : 3 };
@@ -37,6 +104,15 @@ fn main() {
 
     println!("data_one {}", data_one.add());
     println!("data_two {}", data_two.add());
+
+
+    let days : Days = Days { day : EDays::Tue };    
+    println!("days : {}", days.toText());
+    println!("days 2 : {}", days.toText_2());
+
+    let number : Number = Number { num : ENumber::Four };
+    println!("number : {}", number.toText());
+    println!("number 2 : {}", number.toText_2());
 }
 
 
