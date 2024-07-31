@@ -5,6 +5,8 @@ fn add<T1>(num_1 : T1, num_2 : T1) -> T1 {
 }
 */
 
+use std::fmt::Display;
+
 struct DataType_One<T> {
     t1_1 : T,
     t1_2 : T,
@@ -36,6 +38,10 @@ pub trait ToText {
     fn toText_2(&self) -> String {
         String::from("ToText::toText_2")
     }
+}
+
+pub trait ToDisplay {
+    fn toDisplay(&self) -> String;
 }
 
 enum EDays {
@@ -70,6 +76,12 @@ impl ToText for Days {
     }
 }
 
+impl ToDisplay for Days {
+    fn toDisplay(&self) -> String {
+        String::from("Days::toDisplay")
+    }
+}
+
 
 enum ENumber {
     One,
@@ -97,6 +109,32 @@ impl ToText for Number {
 
 
 
+fn doText(toText : &impl ToText) {
+    println!("doText : {}", toText.toText());
+}
+
+fn doText2(toText : &(impl ToText + ToDisplay)) {
+    println!("doText2 : {}", toText.toText());
+}
+
+fn doTextGeneral<T : ToText>(param : &T) {
+    println!("doTextGeneral : {}", param.toText());
+}
+
+fn doTextGeneral2<T : ToText + ToDisplay>(param : &T) {
+    println!("doTextGeneral2 : {}", param.toText());
+}
+
+fn doTextGeneral3<T>(param : &T)
+where
+    T: ToText + ToDisplay
+{
+    println!("doTextGeneral3 : {}", param.toText());
+}
+
+
+
+
 fn main() {
     //let data = Datas { num_1 : 2, num_2 : 3.1 }; // error!
     let data_one = DataType_One { t1_1 : 2, t1_2 : 3 };
@@ -113,6 +151,15 @@ fn main() {
     let number : Number = Number { num : ENumber::Four };
     println!("number : {}", number.toText());
     println!("number 2 : {}", number.toText_2());
+
+
+    doText(&days);
+    doText(&number);
+    doTextGeneral(&days);
+    doTextGeneral(&number);
+    doText2(&days);
+    doTextGeneral2(&days);
+    doTextGeneral3(&days);
 }
 
 
