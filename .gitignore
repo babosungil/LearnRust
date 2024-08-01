@@ -9,4 +9,5 @@ String/target/
 Hashmap/target/
 panic/target/
 GenericDataType/target/
+auto_test/target/
 thread_1/target/
