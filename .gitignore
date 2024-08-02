@@ -10,4 +10,5 @@ Hashmap/target/
 panic/target/
 GenericDataType/target/
 auto_test/target/
+commandline/target/
 thread_1/target/
