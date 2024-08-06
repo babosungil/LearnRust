@@ -11,4 +11,5 @@ panic/target/
 GenericDataType/target/
 auto_test/target/
 commandline/target/
+closure/target/
 thread_1/target/
