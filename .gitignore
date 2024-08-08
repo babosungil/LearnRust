@@ -12,4 +12,5 @@ GenericDataType/target/
 auto_test/target/
 commandline/target/
 closure/target/
+iter/target/
 thread_1/target/
