@@ -11,6 +11,16 @@
 /// 
 /// # Safety
 /// safety!?
+/// 
+
+pub mod TeamColor {
+    pub enum Colors {
+        Red,
+        Green,
+        Blue,
+    }
+}
+
 pub fn test(a : i32) -> i32 {
     a * a
 }
