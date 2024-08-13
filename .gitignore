@@ -13,4 +13,5 @@ auto_test/target/
 commandline/target/
 closure/target/
 iter/target/
+test_cargo/target/
 thread_1/target/
