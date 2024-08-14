@@ -4,3 +4,13 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+babo_lib_1 = {path = './libs/babo_lib_1'}
+babo_lib_2 = {path = './libs/babo_lib_2'}
+babo_lib_3 = {path = './libs/babo_lib_3'}
+
+[workspace]
+members = [
+    "./libs/babo_lib_1",
+    "./libs/babo_lib_2",
+    "./libs/babo_lib_3",
+]

@@ -3,5 +3,22 @@
 version = 3
 
 [[package]]
+name = "babo_lib_1"
+version = "0.1.0"
+
+[[package]]
+name = "babo_lib_2"
+version = "0.1.0"
+
+[[package]]
+name = "babo_lib_3"
+version = "0.1.0"
+
+[[package]]
 name = "test_cargo"
 version = "0.1.0"
+dependencies = [
+ "babo_lib_1",
+ "babo_lib_2",
+ "babo_lib_3",
+]
