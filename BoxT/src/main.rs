@@ -13,7 +13,7 @@ struct MyBox<T>(T);
 
 impl<T> MyBox<T> {
     fn new(x: T) -> MyBox<T> {
-        MyBox(x)
+        MyBox(x)        
     }
 }
 
@@ -22,6 +22,12 @@ impl<T> Deref for MyBox<T> {
 
     fn deref(&self) -> &Self::Target {
         &self.0
+    }
+}
+
+impl<str> Drop for MyBox<str> {
+    fn drop(&mut self) {
+        println!("MyBox - drop");
     }
 }
 
@@ -49,13 +55,21 @@ fn main() {
             Cons(3, Box::new(Nil))
         ))
     ));
-
-
+    
     let my_box = MyBox::new(32);
     //assert_eq!(32, my_box);       // error!
     assert_eq!(32, *my_box);        // use deref()
     //println!("my_box : {:?}", *my_box);
+    drop(my_box);
+    
+    {
+        let my_box_str = MyBox::new(String::from("my box str"));
+        str_print(&my_box_str);
+    }
 
-    let my_box_str = MyBox::new(String::from("my box str"));
-    str_print(&my_box_str);
+    let my_box_str_2 = MyBox::new(String::from("my box str 2"));
+    str_print(&my_box_str_2);
+
+    println!("end of code");
+
 }
