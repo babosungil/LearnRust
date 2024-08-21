@@ -15,4 +15,5 @@ closure/target/
 iter/target/
 test_cargo/target/
 boxT/target/
+pointer/target/
 thread_1/target/
