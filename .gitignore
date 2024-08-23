@@ -16,4 +16,5 @@ iter/target/
 test_cargo/target/
 boxT/target/
 pointer/target/
+weak/target/
 thread_1/target/
