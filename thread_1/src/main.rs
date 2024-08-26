@@ -1,31 +1,31 @@
-use std::thread;
+use std::{thread::{self, JoinHandle}, time::Duration, vec};
 
 fn main() {
-    let mut var_mut = 1;        // mutable
+    
+    let mut handles = Vec::new();
 
-    let var = 2;                // immutable
-    println!("{var}");
+    for i in 0..10 {
+        let handle = thread::spawn(move || {
+            println!("spawn thread : {}", i); 
+        });
+        //handle.join();
+        handles.push(handle);
 
-    let var = var + 1;          // shadowing
-    println!("{var}");
+        thread::sleep(Duration::from_millis(100));
+    };
+    for h in handles {
+        //let _ = h.join();
+    }    
 
-    let str = "! test ?";
-    println!("{str}");
+    thread::spawn(|| {
+        test_func(1);
+    });    
 
-    let str = str.len();        // shadowing
-    println!("{str}");
+    thread::spawn(|| {      
+        test_func(2);
+    });
 
-    const TEST_CONSTANT_VALUE:i32 = 10 * 20 / 5;    // constant
-    println!("{TEST_CONSTANT_VALUE}");
-
-
-
-
-
-
-
-    //thread::spawn(test_func(||{1}));
-    //thread::spawn(test_func(||{2}));
+    thread::sleep(Duration::from_millis(1));
 }
 
 fn test_func(param_1 : i32) {
