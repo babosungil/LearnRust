@@ -11,10 +11,10 @@ fn main() {
         //handle.join();
         handles.push(handle);
 
-        thread::sleep(Duration::from_millis(100));
+        //thread::sleep(Duration::from_millis(100));
     };
     for h in handles {
-        //let _ = h.join();
+        let _ = h.join().unwrap();
     }    
 
     thread::spawn(|| {
