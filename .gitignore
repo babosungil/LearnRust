@@ -20,4 +20,5 @@ thread_1/target/
 thread_2/target/
 thread_3/target/
 trait_test/target/
+unsafe_test/target/
 weak/target/
