@@ -16,9 +16,11 @@ iter/target/
 test_cargo/target/
 boxT/target/
 pointer/target/
+simple_web_server/target/
 thread_1/target/
 thread_2/target/
 thread_3/target/
 trait_test/target/
+trait_test_2/target/
 unsafe_test/target/
 weak/target/
