@@ -35,6 +35,19 @@ impl MyAdd<MyType2> for MyType1 {
 }
 
 
+fn func_test_1(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn func_get_closure() -> Box<dyn Fn(i32, i32) -> i32> {
+    Box::new(|a, b| a + b)
+}
+
+fn func_test_2(f: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
+    f(a, b)
+}
+
+
 fn main() {
     let vec1 = Vector2{ x: 1, y: 2 };
     let vec2 = Vector2{ x: 3, y: 4 };
@@ -56,9 +69,14 @@ fn main() {
     };
     println!("empty_type : {:?}", empty_type);
 
-    loop {
-        println!("looooooop");
-    }
 
+    let test_1 = func_test_1(2, 3);
+    println!("func_Test_1 : {test_1}");
+    let test_2 = func_test_2(func_test_1, 3, 5);
+    println!("func_Test_2 : {test_2}");
 
+    let func_closure = func_get_closure();    
+    let test_3 = func_closure(5, 7);
+    println!("func_Test_3 : {test_3}");
+    
 }
