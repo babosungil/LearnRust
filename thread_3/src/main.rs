@@ -48,13 +48,12 @@ fn main() {
     });
 
 
-
+    /*
     scope(|s|{
         println!("test 3 start");
         for i in 0..10 {
             println!("test 3 start id : {i}");
             s.spawn(|| {
-
                 for _ in 0..10000 {
                     if let a = mutex.lock().unwrap().len() > 1 {
                         mutex.lock().unwrap().pop();                        // not release mutex guard
@@ -65,6 +64,21 @@ fn main() {
 
             thread::sleep(Duration::from_millis(1));
             println!("test 3 - {}", mutex.lock().unwrap().len());
+        }
+    });
+    */
+
+
+    scope(|s|{
+        for i in 0..3 {
+            println!("test 4 start id : {i}");
+            let thread = s.spawn(|| {                
+                thread::park();
+                mutex.lock().unwrap().push(1);
+            });
+            thread.thread().unpark();
+
+            println!("test 4 - {}", mutex.lock().unwrap().len());
         }
     });
 }
