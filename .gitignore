@@ -20,6 +20,7 @@ simple_web_server/target/
 thread_1/target/
 thread_2/target/
 thread_3/target/
+thread_atomic_one/target/
 trait_test/target/
 trait_test_2/target/
 unsafe_test/target/
