@@ -21,6 +21,7 @@ thread_1/target/
 thread_2/target/
 thread_3/target/
 thread_4/target/
+thread_5/target/
 thread_atomic_one/target/
 trait_test/target/
 trait_test_2/target/
