@@ -7,6 +7,12 @@ const ATOMIC_FALSE: AtomicBool = AtomicBool::new(false);
 static READY: [AtomicBool; COUNT] = [ATOMIC_FALSE; COUNT];
 
 fn test_calc(index: usize) -> u64 {
+    /*
+    let mut temp = 0;
+    for i in 0 .. index * 10000 {
+        temp += i;
+    }
+    */
     (index + 1).try_into().unwrap()
 }
 
