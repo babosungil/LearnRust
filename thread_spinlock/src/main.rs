@@ -1,5 +1,7 @@
-use std::{cell::UnsafeCell, sync::atomic::AtomicBool};
+use std::{cell::UnsafeCell, os::windows::thread, sync::atomic::AtomicBool};
 use core::sync::atomic::Ordering::{Acquire, Release};
+use std::ops::{Deref, DerefMut};
+use std::thread::scope;
 
 pub struct SpinLock<T> {
     locked: AtomicBool,
@@ -35,6 +37,25 @@ pub struct Guard<'b, T> {
 
 unsafe impl<T> Sync for Guard<'_, T> where T: Sync {}
 
+impl<T> Deref for Guard<'_, T> {
+    type Target = T;
+    fn deref(&self) -> &T {
+        unsafe { &*self.lock.value.get() }
+    }
+}
+
+impl<T> DerefMut for Guard<'_, T> {
+    fn deref_mut(&mut self) -> &mut T {
+        unsafe { &mut *self.lock.value.get() }
+    }
+}
+
+impl<T> Drop for Guard<'_, T> {
+    fn drop(&mut self) {
+        self.lock.locked.store(false, Release);
+    }
+}
+
 fn main() {
-    println!("Hello, world!");
+    let x = SpinLock::new(Vec::<i32>::new());
 }
